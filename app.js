@@ -11,6 +11,9 @@ var config = {
 SwaggerExpress.create(config, function(err, swaggerExpress) {
   if (err) { throw err; }
 
+  // Also serve the Swagger API docs and Swagger UI
+  app.use(swaggerExpress.runner.swaggerTools.swaggerUi());
+
   // install middleware
   swaggerExpress.register(app);
 
