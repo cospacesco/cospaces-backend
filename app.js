@@ -1,26 +1,19 @@
 'use strict';
 
-var SwaggerExpress = require('swagger-express-mw');
+var loaders = require('./loaders');
 var app = require('express')();
-module.exports = app; // for testing
 
-var config = {
-  appRoot: __dirname // required config
-};
-
-SwaggerExpress.create(config, function(err, swaggerExpress) {
-  if (err) { throw err; }
-
-  // Also serve the Swagger API docs and Swagger UI
-  app.use(swaggerExpress.runner.swaggerTools.swaggerUi());
-
-  // install middleware
-  swaggerExpress.register(app);
-
+async function startServer() {
+  await loaders.init(app);
+  
   var port = process.env.PORT || 10010;
-  app.listen(port);
+  
+  app.listen(port, () => {
+    console.log('\nServer is up & running at http://127.0.0.1:' + port + '/api...');
+    console.log('Read docs at http://127.0.0.1:' + port + '/docs');
+  });
+}
 
-  if (swaggerExpress.runner.swagger.paths['/hello']) {
-    console.log('try this:\ncurl http://127.0.0.1:' + port + '/hello?name=Scott');
-  }
-});
+startServer();
+
+module.exports = app; // for testing
