@@ -2,7 +2,7 @@ swagger: "2.0"
 info:
   version: "0.0.1"
   title: CoSpaces Backend
-host: localhost:10010
+host: cospaces-api.herokuapp.com
 basePath: /api
 schemes:
   - https
