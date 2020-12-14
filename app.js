@@ -8,8 +8,8 @@ async function startServer() {
   await loaders.init(app);
   
   app.listen(config.port, () => {
-    console.log('\nServer is up & running at http://127.0.0.1:' + config.port + '/api...');
-    console.log('Read docs at http://127.0.0.1:' + config.port + '/docs');
+    console.log('\nServer is up & running at '+ config.host + ':' + config.port + '/api...');
+    console.log('Read docs at '+ config.host + ':' + config.port + '/docs');
   });
 }
 
