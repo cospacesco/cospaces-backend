@@ -549,6 +549,30 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+  /sub-tasks/{id}:
+    # x-swagger-router-controller: hello_world
+
+    get:
+      tags: 
+        - sub-tasks
+      description: Returns single sub-task by id
+      # operationId: 
+      parameters:
+        - name: id
+          in: path
+          description: The id of the sub-task to be fetched
+          required: true
+          type: number
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SubTask"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /swagger:
     x-swagger-pipe: swagger_raw
     
@@ -811,6 +835,22 @@ definitions:
         items:
           $ref: "#/definitions/SubTask"
         example: []
+
+  SubTask:
+    properties:
+      id:
+        type: integer
+        example: 1000
+      name:
+        type: string
+        example: Sub-Task A
+      engagements:
+        type: array
+        items:
+          $ref: "#/definitions/EngagementSlim"
+      github_issue_url:
+        type: string
+        example: https://github.com/username/repo/issues/1
 
   SubTaskSlim:
     properties:
