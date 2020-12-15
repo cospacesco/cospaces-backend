@@ -125,6 +125,30 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+  /users/findByUsername/{username}:
+    # x-swagger-router-controller: hello_world
+
+    get:
+      tags: 
+        - users
+      description: Returns single user by username
+      # operationId: 
+      parameters:
+        - name: username
+          in: path
+          description: The username of the user to be fetched
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/User"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /swagger:
     x-swagger-pipe: swagger_raw
     
