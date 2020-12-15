@@ -600,6 +600,27 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+    delete:
+      tags: 
+        - sub-tasks
+      description: Delete single SubTask by id
+      # operationId: 
+      parameters:
+        - name: id
+          in: path
+          description: The id of the SubTask to be deleted
+          required: true
+          type: number
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SubTask"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /swagger:
     x-swagger-pipe: swagger_raw
     
