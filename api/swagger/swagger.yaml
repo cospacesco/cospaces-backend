@@ -38,15 +38,10 @@ paths:
     x-swagger-pipe: swagger_raw
     
 definitions:
-  HelloWorldResponse:
-    required:
-      - message
-    properties:
-      message:
-        type: string
   ErrorResponse:
     required:
       - message
     properties:
       message:
         type: string
+        example: Error Message
