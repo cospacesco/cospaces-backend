@@ -31,6 +31,28 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+    post:
+      tags: 
+        - users
+      description: Create a new user
+      # operationId: 
+      parameters:
+        - name: user
+          in: body
+          description: User object that needs to be created
+          required: true
+          schema:
+            $ref: '#/definitions/NewUser'
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/NewUser"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
   /swagger:
     x-swagger-pipe: swagger_raw
     
@@ -62,3 +84,23 @@ definitions:
       profile_picture:
         type: string
         example: https://domain.com/path/to/profilepic
+
+  NewUser:
+    properties:
+      id:
+        type: integer
+        example: 1000
+      username:
+        type: string
+        example: sebastiantf
+      email:
+        type: string
+        example: sebastian.tharakan97@gmail.com
+      profile_picture:
+        type: string
+        example: https://domain.com/path/to/profilepic
+      coSpaces:
+        type: array
+        items:
+          $ref: "#/definitions/CoSpaceSlim"
+        example: []
