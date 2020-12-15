@@ -397,6 +397,24 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+  /tasks:
+    # x-swagger-router-controller: hello_world
+
+    get:
+      tags: 
+        - tasks
+      description: Returns all tasks
+      # operationId: 
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/AllTasks"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /swagger:
     x-swagger-pipe: swagger_raw
     
@@ -423,6 +441,11 @@ definitions:
     type: array
     items:
       $ref: "#/definitions/ProjectSlim"
+
+  AllTasks:
+    type: array
+    items:
+      $ref: "#/definitions/TaskSlim"
 
   User:
     properties:
@@ -609,3 +632,16 @@ definitions:
       github_repo_url:
         type: string
         example: https://github.com/username/repo
+
+  TaskSlim:
+    properties:
+      id:
+        type: integer
+        example: 1000
+      name:
+        type: string
+        example: Task A
+      sub_tasks:
+        type: array
+        items:
+          $ref: "#/definitions/SubTaskSlim"
