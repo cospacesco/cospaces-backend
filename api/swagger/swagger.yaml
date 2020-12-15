@@ -325,6 +325,30 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+  /projects/{id}:
+    # x-swagger-router-controller: hello_world
+
+    get:
+      tags: 
+        - projects
+      description: Returns single project by id
+      # operationId: 
+      parameters:
+        - name: id
+          in: path
+          description: The id of the project to be fetched
+          required: true
+          type: number
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Project"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /swagger:
     x-swagger-pipe: swagger_raw
     
@@ -474,6 +498,28 @@ definitions:
         items:
           $ref: "#/definitions/Project"
         example: []
+
+  Project:
+    properties:
+      id:
+        type: integer
+        example: 1000
+      slug:
+        type: string
+        example: project-a
+      name:
+        type: string
+        example: Project A
+      picture:
+        type: string
+        example: https://domain.com/path/to/project_pic
+      tasks:
+        type: array
+        items:
+          $ref: "#/definitions/Task"
+      github_repo_url:
+        type: string
+        example: https://github.com/username/repo
 
   ProjectSlim:
     properties:
