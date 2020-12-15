@@ -285,6 +285,24 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+  /projects:
+    # x-swagger-router-controller: hello_world
+
+    get:
+      tags: 
+        - projects
+      description: Returns all projects
+      # operationId: 
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/AllProjects"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /swagger:
     x-swagger-pipe: swagger_raw
     
@@ -306,6 +324,11 @@ definitions:
     type: array
     items:
       $ref: "#/definitions/CoSpaceSlim"
+
+  AllProjects:
+    type: array
+    items:
+      $ref: "#/definitions/ProjectSlim"
 
   User:
     properties:
@@ -429,3 +452,21 @@ definitions:
         items:
           $ref: "#/definitions/Project"
         example: []
+
+  ProjectSlim:
+    properties:
+      id:
+        type: integer
+        example: 1000
+      slug:
+        type: string
+        example: project-a
+      name:
+        type: string
+        example: Project A
+      picture:
+        type: string
+        example: https://domain.com/path/to/project_pic
+      github_repo_url:
+        type: string
+        example: https://github.com/username/repo
