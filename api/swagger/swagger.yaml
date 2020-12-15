@@ -573,6 +573,33 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+    put:
+      tags: 
+        - sub-tasks
+      description: Update an existing SubTask
+      # operationId: 
+      parameters:
+        - name: id
+          in: path
+          description: The id of the SubTask to be updated
+          required: true
+          type: number
+        - name: sub-task
+          in: body
+          description: SubTask object that needs to be updated
+          required: true
+          schema:
+            $ref: '#/definitions/SubTask'
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SubTask"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /swagger:
     x-swagger-pipe: swagger_raw
     
