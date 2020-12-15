@@ -53,6 +53,30 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
             
+  /users/{id}:
+    # x-swagger-router-controller: hello_world
+    
+    get:
+      tags: 
+        - users
+      description: Returns single user by id
+      # operationId: 
+      parameters:
+        - name: id
+          in: path
+          description: The id of the user to be fetched
+          required: true
+          type: number
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/User"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /swagger:
     x-swagger-pipe: swagger_raw
     
@@ -70,6 +94,25 @@ definitions:
     items:
       $ref: "#/definitions/UserSlim"
 
+  User:
+    properties:
+      id:
+        type: integer
+        example: 1000
+      username:
+        type: string
+        example: sebastiantf
+      email:
+        type: string
+        example: sebastian.tharakan97@gmail.com
+      profile_picture:
+        type: string
+        example: https://domain.com/path/to/profilepic
+      coSpaces:
+        type: array
+        items:
+          $ref: "#/definitions/CoSpace"
+  
   UserSlim:
     properties:
       id:
