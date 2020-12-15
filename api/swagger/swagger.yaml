@@ -213,6 +213,33 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+    put:
+      tags: 
+        - cospaces
+      description: Update an existing CoSpace
+      # operationId: 
+      parameters:
+        - name: id
+          in: path
+          description: The id of the CoSpace to be updated
+          required: true
+          type: number
+        - name: cospace
+          in: body
+          description: CoSpace object that needs to be updated
+          required: true
+          schema:
+            $ref: '#/definitions/CoSpace'
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/CoSpace"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /swagger:
     x-swagger-pipe: swagger_raw
     
