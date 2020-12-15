@@ -639,6 +639,28 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+    post:
+      tags: 
+        - engagements
+      description: Create a new Engagement
+      # operationId: 
+      parameters:
+        - name: engagement
+          in: body
+          description: Engagement object that needs to be created
+          required: true
+          schema:
+            $ref: '#/definitions/Engagement'
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Engagement"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
   /swagger:
     x-swagger-pipe: swagger_raw
     
@@ -952,6 +974,29 @@ definitions:
         type: string
         example: https://github.com/username/repo/issues/1
 
+  Engagement:
+    properties:
+      id:
+        type: integer
+        example: 1000
+      modifiedAt:
+        type: string
+        example: "2014-01-01T23:28:56.782Z"
+      user:
+        $ref: "#/definitions/UserSlim"
+      sub_task:
+        $ref: "#/definitions/SubTaskSlim"
+      status:
+        type: string
+        enum: [STARTED, REVIEW, COMPLETE]
+        example: "COMPLETE"
+      submission_content:
+        type: string
+        example: "Non-github URL or any other text"
+      github_pr_url:
+        type: string
+        example: https://github.com/username/repo/pull/1
+  
   EngagementSlim:
     properties:
       id:
