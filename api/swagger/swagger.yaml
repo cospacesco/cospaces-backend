@@ -167,6 +167,28 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+    post:
+      tags: 
+        - cospaces
+      description: Create a new CoSpace
+      # operationId: 
+      parameters:
+        - name: cospace
+          in: body
+          description: CoSpace object that needs to be created
+          required: true
+          schema:
+            $ref: '#/definitions/NewCoSpace'
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/NewCoSpace"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /swagger:
     x-swagger-pipe: swagger_raw
     
@@ -259,3 +281,30 @@ definitions:
         example: https://domain.com/path/to/cospace_pic
       lead_user:
         $ref: "#/definitions/UserSlim"
+
+  NewCoSpace:
+    properties:
+      id:
+        type: integer
+        example: 1000
+      slug:
+        type: string
+        example: cospace-a
+      name:
+        type: string
+        example: CoSpace A
+      picture:
+        type: string
+        example: https://domain.com/path/to/cospace_pic
+      lead_user:
+        $ref: "#/definitions/UserSlim"
+      members:
+        type: array
+        items:
+          $ref: "#/definitions/UserSlim"
+        example: []
+      projects:
+        type: array
+        items:
+          $ref: "#/definitions/Project"
+        example: []
