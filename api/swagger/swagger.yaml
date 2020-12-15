@@ -261,6 +261,30 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+  /cospaces/findBySlug/{slug}:
+    # x-swagger-router-controller: hello_world
+
+    get:
+      tags: 
+        - cospaces
+      description: Returns single CoSpace by slug
+      # operationId: 
+      parameters:
+        - name: slug
+          in: path
+          description: The slug of the CoSpace to be fetched
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/CoSpace"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /swagger:
     x-swagger-pipe: swagger_raw
     
