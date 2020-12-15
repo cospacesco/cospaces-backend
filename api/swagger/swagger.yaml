@@ -11,6 +11,7 @@ consumes:
   - application/json
 produces:
   - application/json
+
 paths:
   /hello:
     x-swagger-router-controller: hello_world
@@ -32,8 +33,10 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+
   /swagger:
     x-swagger-pipe: swagger_raw
+    
 definitions:
   HelloWorldResponse:
     required:
