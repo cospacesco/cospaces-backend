@@ -303,6 +303,28 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+    post:
+      tags: 
+        - projects
+      description: Create a new Project
+      # operationId: 
+      parameters:
+        - name: project
+          in: body
+          description: Project object that needs to be created
+          required: true
+          schema:
+            $ref: '#/definitions/NewProject'
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/NewProject"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /swagger:
     x-swagger-pipe: swagger_raw
     
@@ -467,6 +489,29 @@ definitions:
       picture:
         type: string
         example: https://domain.com/path/to/project_pic
+      github_repo_url:
+        type: string
+        example: https://github.com/username/repo
+
+  NewProject:
+    properties:
+      id:
+        type: integer
+        example: 1000
+      slug:
+        type: string
+        example: project-a
+      name:
+        type: string
+        example: Project A
+      picture:
+        type: string
+        example: https://domain.com/path/to/project_pic
+      tasks:
+        type: array
+        items:
+          $ref: "#/definitions/Task"
+        example: []
       github_repo_url:
         type: string
         example: https://github.com/username/repo
