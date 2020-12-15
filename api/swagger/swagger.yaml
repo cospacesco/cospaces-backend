@@ -189,6 +189,30 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+  /cospaces/{id}:
+    # x-swagger-router-controller: hello_world
+
+    get:
+      tags: 
+        - cospaces
+      description: Returns single CoSpace by id
+      # operationId: 
+      parameters:
+        - name: id
+          in: path
+          description: The id of the CoSpace to be fetched
+          required: true
+          type: number
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/CoSpace"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /swagger:
     x-swagger-pipe: swagger_raw
     
@@ -264,6 +288,31 @@ definitions:
         items:
           $ref: "#/definitions/CoSpaceSlim"
         example: []
+
+  CoSpace:
+    properties:
+      id:
+        type: integer
+        example: 1000
+      slug:
+        type: string
+        example: cospace-a
+      name:
+        type: string
+        example: CoSpace A
+      picture:
+        type: string
+        example: https://domain.com/path/to/cospace_pic
+      lead_user:
+        $ref: "#/definitions/UserSlim"
+      members:
+        type: array
+        items:
+          $ref: "#/definitions/UserSlim"
+      projects:
+        type: array
+        items:
+          $ref: "#/definitions/Project"
 
   CoSpaceSlim:
     properties:
