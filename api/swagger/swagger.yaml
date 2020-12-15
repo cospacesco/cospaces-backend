@@ -240,6 +240,27 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+    delete:
+      tags: 
+        - cospaces
+      description: Delete single CoSpace by id
+      # operationId: 
+      parameters:
+        - name: id
+          in: path
+          description: The id of the CoSpace to be deleted
+          required: true
+          type: number
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/CoSpace"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /swagger:
     x-swagger-pipe: swagger_raw
     
