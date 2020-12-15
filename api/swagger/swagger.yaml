@@ -509,6 +509,24 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+  /sub-tasks:
+    # x-swagger-router-controller: hello_world
+
+    get:
+      tags: 
+        - sub-tasks
+      description: Returns all sub-tasks
+      # operationId: 
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/AllSubTasks"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /swagger:
     x-swagger-pipe: swagger_raw
     
@@ -540,6 +558,11 @@ definitions:
     type: array
     items:
       $ref: "#/definitions/TaskSlim"
+
+  AllSubTasks:
+    type: array
+    items:
+      $ref: "#/definitions/SubTaskSlim"
 
   User:
     properties:
@@ -766,3 +789,15 @@ definitions:
         items:
           $ref: "#/definitions/SubTask"
         example: []
+
+  SubTaskSlim:
+    properties:
+      id:
+        type: integer
+        example: 1000
+      name:
+        type: string
+        example: Sub-Task A
+      github_issue_url:
+        type: string
+        example: https://github.com/username/repo/issues/1
