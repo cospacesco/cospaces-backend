@@ -13,22 +13,19 @@ produces:
   - application/json
 
 paths:
-  /hello:
-    x-swagger-router-controller: hello_world
+  /users:
+    # x-swagger-router-controller: hello_world
+
     get:
-      description: Returns 'Hello' to the caller
-      operationId: hello
-      parameters:
-        - name: name
-          in: query
-          description: The name of the person to whom to say hello
-          required: false
-          type: string
+      tags: 
+        - users
+      description: Returns all users
+      # operationId: 
       responses:
         "200":
           description: Success
           schema:
-            $ref: "#/definitions/HelloWorldResponse"
+            $ref: "#/definitions/AllUsers"
         default:
           description: Error
           schema:
@@ -45,3 +42,23 @@ definitions:
       message:
         type: string
         example: Error Message
+
+  AllUsers:
+    type: array
+    items:
+      $ref: "#/definitions/UserSlim"
+
+  UserSlim:
+    properties:
+      id:
+        type: integer
+        example: 1000
+      username:
+        type: string
+        example: sebastiantf
+      email:
+        type: string
+        example: sebastian.tharakan97@gmail.com
+      profile_picture:
+        type: string
+        example: https://domain.com/path/to/profilepic
