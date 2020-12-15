@@ -621,6 +621,24 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+  /engagements:
+    # x-swagger-router-controller: hello_world
+
+    get:
+      tags: 
+        - engagements
+      description: Returns all engagements
+      # operationId: 
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/AllEngagements"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /swagger:
     x-swagger-pipe: swagger_raw
     
@@ -657,6 +675,11 @@ definitions:
     type: array
     items:
       $ref: "#/definitions/SubTaskSlim"
+
+  AllEngagements:
+    type: array
+    items:
+      $ref: "#/definitions/EngagementSlim"
 
   User:
     properties:
@@ -928,3 +951,23 @@ definitions:
       github_issue_url:
         type: string
         example: https://github.com/username/repo/issues/1
+
+  EngagementSlim:
+    properties:
+      id:
+        type: integer
+        example: 1000
+      modifiedAt:
+        type: string
+        example: "2014-01-01T23:28:56.782Z"
+      status:
+        type: string
+        enum: [STARTED, REVIEW, COMPLETE]
+        example: "COMPLETE"
+      submission_content:
+        type: string
+        example: "Non-github URL or any other text"
+      github_pr_url:
+        type: string
+        example: https://github.com/username/repo/pull/1
+        
