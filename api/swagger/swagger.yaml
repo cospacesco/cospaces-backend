@@ -437,6 +437,30 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+  /tasks/{id}:
+    # x-swagger-router-controller: hello_world
+
+    get:
+      tags: 
+        - tasks
+      description: Returns single task by id
+      # operationId: 
+      parameters:
+        - name: id
+          in: path
+          description: The id of the task to be fetched
+          required: true
+          type: number
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Task"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /swagger:
     x-swagger-pipe: swagger_raw
     
@@ -654,6 +678,19 @@ definitions:
       github_repo_url:
         type: string
         example: https://github.com/username/repo
+
+  Task:
+    properties:
+      id:
+        type: integer
+        example: 1000
+      name:
+        type: string
+        example: Task A
+      sub_tasks:
+        type: array
+        items:
+          $ref: "#/definitions/SubTask"
 
   TaskSlim:
     properties:
