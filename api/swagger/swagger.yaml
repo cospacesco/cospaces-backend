@@ -104,6 +104,27 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+    delete:
+      tags: 
+        - users
+      description: Delete single user by id
+      # operationId: 
+      parameters:
+        - name: id
+          in: path
+          description: The id of the user to be deleted
+          required: true
+          type: number
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/User"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /swagger:
     x-swagger-pipe: swagger_raw
     
