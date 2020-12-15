@@ -376,6 +376,27 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+    delete:
+      tags: 
+        - projects
+      description: Delete single Project by id
+      # operationId: 
+      parameters:
+        - name: id
+          in: path
+          description: The id of the Project to be deleted
+          required: true
+          type: number
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Project"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /swagger:
     x-swagger-pipe: swagger_raw
     
