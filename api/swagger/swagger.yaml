@@ -661,6 +661,30 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
             
+  /engagements/{id}:
+    # x-swagger-router-controller: hello_world
+
+    get:
+      tags: 
+        - engagements
+      description: Returns single engagement by id
+      # operationId: 
+      parameters:
+        - name: id
+          in: path
+          description: The id of the engagement to be fetched
+          required: true
+          type: number
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Engagement"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /swagger:
     x-swagger-pipe: swagger_raw
     
