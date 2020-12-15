@@ -415,6 +415,28 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+    post:
+      tags: 
+        - tasks
+      description: Create a new Task
+      # operationId: 
+      parameters:
+        - name: task
+          in: body
+          description: Task object that needs to be created
+          required: true
+          schema:
+            $ref: '#/definitions/NewTask'
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/NewTask"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /swagger:
     x-swagger-pipe: swagger_raw
     
@@ -645,3 +667,17 @@ definitions:
         type: array
         items:
           $ref: "#/definitions/SubTaskSlim"
+
+  NewTask:
+    properties:
+      id:
+        type: integer
+        example: 1000
+      name:
+        type: string
+        example: Task A
+      sub_tasks:
+        type: array
+        items:
+          $ref: "#/definitions/SubTask"
+        example: []
