@@ -572,28 +572,6 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
-    post:
-      tags: 
-        - sub-tasks
-      description: Create a new SubTask
-      # operationId: 
-      parameters:
-        - name: body
-          in: body
-          description: SubTask object that needs to be created
-          required: true
-          schema:
-            $ref: '#/definitions/NewSubTaskRequest'
-      responses:
-        "200":
-          description: Success
-          schema:
-            $ref: "#/definitions/NewSubTaskResponse"
-        default:
-          description: Error
-          schema:
-            $ref: "#/definitions/ErrorResponse"
-
   /sub-tasks/{id}:
     # x-swagger-router-controller: hello_world
 
@@ -661,6 +639,36 @@ paths:
           description: Success
           schema:
             $ref: "#/definitions/SubTask"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /tasks/{id}/sub-tasks:
+    # x-swagger-router-controller: hello_world
+
+    post:
+      tags: 
+        - sub-tasks
+      description: Create a new SubTask
+      # operationId: 
+      parameters:
+        - name: id
+          in: path
+          description: Id of the task to add the sub-task to
+          required: true
+          type: integer
+        - name: body
+          in: body
+          description: SubTask object that needs to be created
+          required: true
+          schema:
+            $ref: '#/definitions/NewSubTaskRequest'
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/NewSubTaskResponse"
         default:
           description: Error
           schema:
