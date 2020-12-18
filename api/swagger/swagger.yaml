@@ -332,28 +332,6 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
-    post:
-      tags: 
-        - projects
-      description: Create a new Project
-      # operationId: 
-      parameters:
-        - name: body
-          in: body
-          description: Project object that needs to be created
-          required: true
-          schema:
-            $ref: '#/definitions/NewProjectRequest'
-      responses:
-        "200":
-          description: Success
-          schema:
-            $ref: "#/definitions/NewProjectResponse"
-        default:
-          description: Error
-          schema:
-            $ref: "#/definitions/ErrorResponse"
-
   /projects/{id}:
     # x-swagger-router-controller: hello_world
 
@@ -421,6 +399,36 @@ paths:
           description: Success
           schema:
             $ref: "#/definitions/Project"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /cospaces/{id}/projects:
+    # x-swagger-router-controller: hello_world
+
+    post:
+      tags: 
+        - projects
+      description: Create a new Project
+      # operationId: 
+      parameters:
+        - name: id
+          in: path
+          description: Id of the CoSpace to add the project to
+          required: true
+          type: integer
+        - name: body
+          in: body
+          description: Project object that needs to be created
+          required: true
+          schema:
+            $ref: '#/definitions/NewProjectRequest'
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/NewProjectResponse"
         default:
           description: Error
           schema:
