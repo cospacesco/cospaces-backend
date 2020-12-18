@@ -8,7 +8,10 @@ const YAML = require('yamljs');
 const swaggerDocument = YAML.load('./api/swagger/swagger.yaml');
 
 var swaggerUiOptions = {
-  customCss: 'div.swagger-ui > div { max-width:960px; margin:auto; } .swagger-ui .topbar { display: none }'
+  customCss: 'div.swagger-ui > div { max-width:960px; margin:auto; } .swagger-ui .topbar { display: none }',
+  swaggerOptions: {
+    defaultModelsExpandDepth: 0
+  }
 };
 
 function initServer(expressApp) {
