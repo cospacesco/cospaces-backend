@@ -826,7 +826,7 @@ definitions:
   AllEngagements:
     type: array
     items:
-      $ref: "#/definitions/EngagementSlim"
+      $ref: "#/definitions/Engagement"
 
   User:
     properties:
@@ -1187,6 +1187,8 @@ definitions:
       modifiedAt:
         type: string
         example: "2014-01-01T23:28:56.782Z"
+      user:
+        $ref: "#/definitions/UserSlim"
       status:
         type: string
         enum: [STARTED, REVIEW, COMPLETE]
@@ -1208,8 +1210,10 @@ definitions:
         example: "2014-01-01T23:28:56.782Z"
       user:
         type: integer
+        example: 1000
       sub_task:
         type: integer
+        example: 1000
       status:
         type: string
         enum: [STARTED, REVIEW, COMPLETE]
