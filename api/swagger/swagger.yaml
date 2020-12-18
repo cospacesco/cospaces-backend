@@ -12,6 +12,16 @@ consumes:
 produces:
   - application/json
 
+tags:
+  - name: users
+  - name: cospaces
+  - name: projects
+  - name: tasks
+  - name: sub-tasks
+  - name: engagements
+  - name: PUT
+  - name: DELETE
+
 paths:
   /users:
     # x-swagger-router-controller: hello_world
@@ -79,7 +89,7 @@ paths:
 
     put:
       tags: 
-        - users
+        - PUT
       description: Update an existing user
       # operationId: 
       parameters:
@@ -106,7 +116,7 @@ paths:
 
     delete:
       tags: 
-        - users
+        - DELETE
       description: Delete single user by id
       # operationId: 
       parameters:
@@ -215,7 +225,7 @@ paths:
 
     put:
       tags: 
-        - cospaces
+        - PUT
       description: Update an existing CoSpace
       # operationId: 
       parameters:
@@ -242,7 +252,7 @@ paths:
 
     delete:
       tags: 
-        - cospaces
+        - DELETE
       description: Delete single CoSpace by id
       # operationId: 
       parameters:
@@ -358,7 +368,7 @@ paths:
 
     put:
       tags: 
-        - projects
+        - PUT
       description: Update an existing Project
       # operationId: 
       parameters:
@@ -385,7 +395,7 @@ paths:
 
     delete:
       tags: 
-        - projects
+        - DELETE
       description: Delete single Project by id
       # operationId: 
       parameters:
@@ -478,7 +488,7 @@ paths:
 
     put:
       tags: 
-        - tasks
+        - PUT
       description: Update an existing Task
       # operationId: 
       parameters:
@@ -505,7 +515,7 @@ paths:
 
     delete:
       tags: 
-        - tasks
+        - DELETE
       description: Delete single Task by id
       # operationId: 
       parameters:
@@ -598,7 +608,7 @@ paths:
 
     put:
       tags: 
-        - sub-tasks
+        - PUT
       description: Update an existing SubTask
       # operationId: 
       parameters:
@@ -625,7 +635,7 @@ paths:
 
     delete:
       tags: 
-        - sub-tasks
+        - DELETE
       description: Delete single SubTask by id
       # operationId: 
       parameters:
@@ -740,7 +750,7 @@ paths:
 
     put:
       tags: 
-        - engagements
+        - PUT
       description: Update an existing Engagement
       # operationId: 
       parameters:
@@ -767,7 +777,7 @@ paths:
 
     delete:
       tags: 
-        - engagements
+        - DELETE
       description: Delete single Engagement by id
       # operationId: 
       parameters:
