@@ -37,7 +37,7 @@ paths:
       description: Create a new user
       # operationId: 
       parameters:
-        - name: user
+        - name: body
           in: body
           description: User object that needs to be created
           required: true
@@ -173,7 +173,7 @@ paths:
       description: Create a new CoSpace
       # operationId: 
       parameters:
-        - name: cospace
+        - name: body
           in: body
           description: CoSpace object that needs to be created
           required: true
@@ -309,7 +309,7 @@ paths:
       description: Create a new Project
       # operationId: 
       parameters:
-        - name: project
+        - name: body
           in: body
           description: Project object that needs to be created
           required: true
@@ -421,7 +421,7 @@ paths:
       description: Create a new Task
       # operationId: 
       parameters:
-        - name: task
+        - name: body
           in: body
           description: Task object that needs to be created
           required: true
@@ -533,7 +533,7 @@ paths:
       description: Create a new SubTask
       # operationId: 
       parameters:
-        - name: sub-task
+        - name: body
           in: body
           description: SubTask object that needs to be created
           required: true
@@ -645,7 +645,7 @@ paths:
       description: Create a new Engagement
       # operationId: 
       parameters:
-        - name: engagement
+        - name: body
           in: body
           description: Engagement object that needs to be created
           required: true
