@@ -452,28 +452,6 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
-    post:
-      tags: 
-        - tasks
-      description: Create a new Task
-      # operationId: 
-      parameters:
-        - name: body
-          in: body
-          description: Task object that needs to be created
-          required: true
-          schema:
-            $ref: '#/definitions/NewTaskRequest'
-      responses:
-        "200":
-          description: Success
-          schema:
-            $ref: "#/definitions/NewTaskResponse"
-        default:
-          description: Error
-          schema:
-            $ref: "#/definitions/ErrorResponse"
-
   /tasks/{id}:
     # x-swagger-router-controller: hello_world
 
@@ -541,6 +519,36 @@ paths:
           description: Success
           schema:
             $ref: "#/definitions/Task"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /projects/{id}/tasks:
+    # x-swagger-router-controller: hello_world
+
+    post:
+      tags: 
+        - tasks
+      description: Create a new Task
+      # operationId: 
+      parameters:
+        - name: id
+          in: path
+          description: Id of the project to add the task to
+          required: true
+          type: integer
+        - name: body
+          in: body
+          description: Task object that needs to be created
+          required: true
+          schema:
+            $ref: '#/definitions/NewTaskRequest'
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/NewTaskResponse"
         default:
           description: Error
           schema:
