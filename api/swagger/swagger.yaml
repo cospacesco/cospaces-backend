@@ -42,12 +42,12 @@ paths:
           description: User object that needs to be created
           required: true
           schema:
-            $ref: '#/definitions/NewUser'
+            $ref: '#/definitions/NewUserRequest'
       responses:
         "200":
           description: Success
           schema:
-            $ref: "#/definitions/NewUser"
+            $ref: "#/definitions/NewUserResponse"
         default:
           description: Error
           schema:
@@ -178,12 +178,12 @@ paths:
           description: CoSpace object that needs to be created
           required: true
           schema:
-            $ref: '#/definitions/NewCoSpace'
+            $ref: '#/definitions/NewCoSpaceRequest'
       responses:
         "200":
           description: Success
           schema:
-            $ref: "#/definitions/NewCoSpace"
+            $ref: "#/definitions/NewCoSpaceResponse"
         default:
           description: Error
           schema:
@@ -314,12 +314,12 @@ paths:
           description: Project object that needs to be created
           required: true
           schema:
-            $ref: '#/definitions/NewProject'
+            $ref: '#/definitions/NewProjectRequest'
       responses:
         "200":
           description: Success
           schema:
-            $ref: "#/definitions/NewProject"
+            $ref: "#/definitions/NewProjectResponse"
         default:
           description: Error
           schema:
@@ -426,12 +426,12 @@ paths:
           description: Task object that needs to be created
           required: true
           schema:
-            $ref: '#/definitions/NewTask'
+            $ref: '#/definitions/NewTaskRequest'
       responses:
         "200":
           description: Success
           schema:
-            $ref: "#/definitions/NewTask"
+            $ref: "#/definitions/NewTaskResponse"
         default:
           description: Error
           schema:
@@ -538,12 +538,12 @@ paths:
           description: SubTask object that needs to be created
           required: true
           schema:
-            $ref: '#/definitions/NewSubTask'
+            $ref: '#/definitions/NewSubTaskRequest'
       responses:
         "200":
           description: Success
           schema:
-            $ref: "#/definitions/NewSubTask"
+            $ref: "#/definitions/NewSubTaskResponse"
         default:
           description: Error
           schema:
@@ -650,12 +650,12 @@ paths:
           description: Engagement object that needs to be created
           required: true
           schema:
-            $ref: '#/definitions/Engagement'
+            $ref: '#/definitions/NewEngagementRequest'
       responses:
         "200":
           description: Success
           schema:
-            $ref: "#/definitions/Engagement"
+            $ref: "#/definitions/NewEngagementResponse"
         default:
           description: Error
           schema:
@@ -809,7 +809,25 @@ definitions:
         type: string
         example: https://domain.com/path/to/profilepic
 
-  NewUser:
+  NewUserRequest:
+    properties:
+      id:
+        type: integer
+        example: 1000
+      username:
+        type: string
+        example: sebastiantf
+      email:
+        type: string
+        example: sebastian.tharakan97@gmail.com
+      password:
+        type: string
+        example: password
+      profile_picture:
+        type: string
+        example: https://domain.com/path/to/profilepic
+  
+  NewUserResponse:
     properties:
       id:
         type: integer
@@ -826,7 +844,7 @@ definitions:
       coSpaces:
         type: array
         items:
-          $ref: "#/definitions/CoSpaceSlim"
+          $ref: "#/definitions/CoSpace"
         example: []
 
   CoSpace:
@@ -871,7 +889,10 @@ definitions:
       lead_user:
         $ref: "#/definitions/UserSlim"
 
-  NewCoSpace:
+  NewCoSpaceRequest:
+    $ref: "#/definitions/CoSpaceSlim"
+
+  NewCoSpaceResponse:
     properties:
       id:
         type: integer
@@ -938,7 +959,10 @@ definitions:
         type: string
         example: https://github.com/username/repo
 
-  NewProject:
+  NewProjectRequest:
+    $ref: "#/definitions/ProjectSlim"
+
+  NewProjectResponse:
     properties:
       id:
         type: integer
@@ -987,7 +1011,16 @@ definitions:
         items:
           $ref: "#/definitions/SubTaskSlim"
 
-  NewTask:
+  NewTaskRequest:
+    properties:
+      id:
+        type: integer
+        example: 1000
+      name:
+        type: string
+        example: Task A
+
+  NewTaskResponse:
     properties:
       id:
         type: integer
@@ -1029,7 +1062,10 @@ definitions:
         type: string
         example: https://github.com/username/repo/issues/1
 
-  NewSubTask:
+  NewSubTaskRequest:
+    $ref: "#/definitions/SubTaskSlim"
+
+  NewSubTaskResponse:
     properties:
       id:
         type: integer
@@ -1088,3 +1124,28 @@ definitions:
         type: string
         example: https://github.com/username/repo/pull/1
         
+  NewEngagementRequest:
+    properties:
+      id:
+        type: integer
+        example: 1000
+      modifiedAt:
+        type: string
+        example: "2014-01-01T23:28:56.782Z"
+      user:
+        type: integer
+      sub_task:
+        type: integer
+      status:
+        type: string
+        enum: [STARTED, REVIEW, COMPLETE]
+        example: "COMPLETE"
+      submission_content:
+        type: string
+        example: "Non-github URL or any other text"
+      github_pr_url:
+        type: string
+        example: https://github.com/username/repo/pull/1
+
+  NewEngagementResponse:
+    $ref: "#/definitions/Engagement"
