@@ -261,6 +261,35 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
+  /cospaces/{id}/members/{userId}:
+    # x-swagger-router-controller: hello_world
+
+    post:
+      tags: 
+        - cospaces
+      description: Add a user as member to a CoSpace
+      # operationId: 
+      parameters:
+        - name: id
+          in: path
+          description: Id of the CoSpace to add the user as member to
+          required: true
+          type: integer
+        - name: userId
+          in: path
+          description: Id of the user to add as member
+          required: true
+          type: integer
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/AddCoSpaceMemberResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /cospaces/findBySlug/{slug}:
     # x-swagger-router-controller: hello_world
 
@@ -918,6 +947,27 @@ definitions:
         items:
           $ref: "#/definitions/Project"
         example: []
+
+  AddCoSpaceMemberResponse:
+    properties:
+      id:
+        type: integer
+        example: 1000
+      slug:
+        type: string
+        example: cospace-a
+      name:
+        type: string
+        example: CoSpace A
+      picture:
+        type: string
+        example: https://domain.com/path/to/cospace_pic
+      lead_user:
+        $ref: "#/definitions/UserSlim"
+      members:
+        type: array
+        items:
+          $ref: "#/definitions/UserSlim"
 
   Project:
     properties:
