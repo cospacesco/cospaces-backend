@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const User = require('./User');
   
 const CoSpaceSchema = new mongoose.Schema({ 
     id: Number,
@@ -38,6 +39,17 @@ CoSpaceSchema.methods.toApiCoSpaceSchema = function() {
         lead_user: this.lead_user.toApiUserSlimSchema(),
         members: this.members,
         projects: this.projects
+    }
+}
+
+CoSpaceSchema.methods.toApiAddCoSpaceMemberResponseSchema = function() {
+    return {
+        id: this.id,
+        slug: this.slug,
+        name: this.name,
+        picture: this.picture,
+        lead_user: this.lead_user.toApiUserSlimSchema(),
+        members: User.toApiAllUsersSchema(this.members)
     }
 }
 

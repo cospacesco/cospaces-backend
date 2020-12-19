@@ -12,9 +12,7 @@ router.get('/:id', async (req,res) => {
     res.json('GET /cospaces/'+req.params.id);
 });
 
-router.post('/:id/members/:userId', async (req, res) => {
-    res.json('POST /cospaces/'+req.params.id+'/members/'+req.params.userId);
-});
+router.post('/:id/members/:userId', async (req, res) => res.json(await CoSpaceService.AddMember(req.params.id, req.params.userId)));
 
 router.get('/findBySlug/:slug', async (req,res) => {
     res.json('GET /cospaces/'+req.params.slug);

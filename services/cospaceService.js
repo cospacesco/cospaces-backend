@@ -12,6 +12,21 @@ async function Create(coSpace) {
     return coSpace.toApiCoSpaceSchema();
 }
 
+async function AddMember(coSpaceId, userId) {
+    let coSpace = await CoSpace.findOne({ id: coSpaceId });
+    const memberAlreadyExists = coSpace.members.some(member => member.id == userId);
+    if(!memberAlreadyExists) {
+        let user = await User.findOne({ id: userId });
+        userId = await replaceId(userId, UserService);
+        coSpace.members.push(userId);
+        coSpace = await coSpace.save();
+        user.coSpaces.push(coSpace);
+        await user.save();
+    }
+    return coSpace.toApiAddCoSpaceMemberResponseSchema();
+}
+
 module.exports = {
-    Create
+    Create,
+    AddMember
 };

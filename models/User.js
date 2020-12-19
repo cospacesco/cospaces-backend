@@ -17,6 +17,10 @@ const UserSchema = new mongoose.Schema({
 
 UserSchema.plugin(require('mongoose-autopopulate'));
 
+UserSchema.statics.toApiAllUsersSchema = function (array) {
+    return array.map((user) => user.toApiUserSlimSchema());
+};
+
 UserSchema.methods.toApiUserSchema = function() { 
   return {
     id: this.id,
