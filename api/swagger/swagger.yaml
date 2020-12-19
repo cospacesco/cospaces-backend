@@ -953,7 +953,22 @@ definitions:
         $ref: "#/definitions/UserSlim"
 
   NewCoSpaceRequest:
-    $ref: "#/definitions/CoSpaceSlim"
+    properties:
+      id:
+        type: integer
+        example: 1000
+      slug:
+        type: string
+        example: cospace-a
+      name:
+        type: string
+        example: CoSpace A
+      picture:
+        type: string
+        example: https://domain.com/path/to/cospace_pic
+      lead_user:
+        type: integer
+        example: 1000
 
   NewCoSpaceResponse:
     properties:
