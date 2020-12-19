@@ -27,4 +27,13 @@ UserSchema.methods.toApiUserSchema = function() {
   };
 }
 
+UserSchema.methods.toApiUserSlimSchema = function() {
+  return {
+    id: this.id,
+    username: this.username,
+    email: this.email,
+    profile_picture: this.profile_picture,
+  };
+}
+
 module.exports = mongoose.model( 'User', UserSchema, 'users'); 

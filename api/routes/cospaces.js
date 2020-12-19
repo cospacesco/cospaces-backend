@@ -1,13 +1,12 @@
 const router = require('express').Router();
 const projectsSubRouter = require('./projects').subRouter;
+const CoSpaceService = require('../../services/cospaceService');
 
 router.get('/', async (req,res) => {
     res.json('GET /cospaces');
 });
 
-router.post('/', async (req, res) => {
-    res.json('POST /cospaces');
-});
+router.post('/', async (req, res) => res.json(await CoSpaceService.Create(req.body)));
 
 router.get('/:id', async (req,res) => {
     res.json('GET /cospaces/'+req.params.id);
