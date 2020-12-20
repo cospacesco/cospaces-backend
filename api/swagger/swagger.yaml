@@ -1172,11 +1172,6 @@ definitions:
       name:
         type: string
         example: Sub-Task A
-      engagements:
-        type: array
-        items:
-          $ref: "#/definitions/EngagementSlim"
-        example: []
       github_issue_url:
         type: string
         example: https://github.com/username/repo/issues/1
