@@ -9,6 +9,13 @@ async function Create(taskId, subTask) {
     return subTask.toApiSubTaskSchema();
 }
 
+async function GetSubTaskById(id) {
+    let result = await SubTask.findOne({ id });
+    return result;
+}
+
 module.exports = {
-    Create
+    Create,
+    GetById: GetSubTaskById,
+    GetSubTaskById,
 };
