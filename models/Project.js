@@ -29,4 +29,14 @@ ProjectSchema.methods.toApiProjectSchema = function() {
     };
   }
 
+ProjectSchema.methods.toApiProjectSlimSchema = function () {
+    return {
+        id: this.id,
+        slug: this.slug,
+        name: this.name,
+        picture: this.picture,
+        github_repo_url: this.github_repo_url,
+    };
+};
+
 module.exports = mongoose.model( 'Project', ProjectSchema, 'projects'); 

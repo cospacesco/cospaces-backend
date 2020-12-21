@@ -23,6 +23,10 @@ const EngagementSchema = new mongoose.Schema({
 
 EngagementSchema.plugin(require('mongoose-autopopulate'));
 
+EngagementSchema.statics.toApiAllEngagementsSchema = function (array) {
+  return array.map((engagement) => engagement.toApiEngagementSchema());
+};
+
 EngagementSchema.methods.toApiEngagementSchema = function() { 
   return {
     id: this.id,
@@ -32,6 +36,17 @@ EngagementSchema.methods.toApiEngagementSchema = function() {
     status: this.status,
     submission_content: this.submission_content,
     github_pr_url: this.github_pr_url
+    
+  };
+}
+
+EngagementSchema.statics.toApiEngagementSlimSchema = function(engagement) { 
+  return {
+    id: engagement.id,
+    updatedAt: engagement.updatedAt,
+    status: engagement.status,
+    submission_content: engagement.submission_content,
+    github_pr_url: engagement.github_pr_url
     
   };
 }

@@ -9,13 +9,11 @@ const UserSchema = new mongoose.Schema({
     coSpaces: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'CoSpace',
-            autopopulate: true
+            ref: 'CoSpace'
         }
     ]
 }, { timestamps: true }); 
 
-UserSchema.plugin(require('mongoose-autopopulate'));
 
 UserSchema.statics.toApiAllUsersSchema = function (array) {
     return array.map((user) => user.toApiUserSlimSchema());

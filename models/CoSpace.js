@@ -37,7 +37,7 @@ CoSpaceSchema.methods.toApiCoSpaceSchema = function() {
         name: this.name,
         picture: this.picture,
         lead_user: this.lead_user.toApiUserSlimSchema(),
-        members: this.members,
+        members: User.toApiAllUsersSchema(this.members),
         projects: this.projects
     }
 }

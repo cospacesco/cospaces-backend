@@ -23,4 +23,11 @@ TaskSchema.methods.toApiTaskSchema = function() {
     };
   }
 
+TaskSchema.methods.toApiTaskSlimSchema = function () {
+    return {
+        id: this.id,
+        name: this.name,
+    };
+};
+
 module.exports = mongoose.model( 'Task', TaskSchema, 'tasks'); 

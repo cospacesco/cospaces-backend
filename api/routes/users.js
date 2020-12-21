@@ -7,9 +7,7 @@ router.get('/', async (req,res) => {
 
 router.post('/', async (req, res) => res.json(await UserService.Create(req.body)));
 
-router.get('/:id', async (req,res) => {
-    res.json('GET /users/'+req.params.id);
-});
+router.get('/:id', async (req,res) => res.json(await UserService.GetUserById(req.params.id)));
 
 router.get('/findByUsername/:username', async (req,res) => {
     res.json('GET /users/'+req.params.username);
